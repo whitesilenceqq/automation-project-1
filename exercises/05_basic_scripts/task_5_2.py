@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
 Задание 5.2
@@ -30,3 +31,36 @@ Out[1]: '11111111111111111111111111110000'
 
 Ограничение: Все задания надо выполнять используя только пройденные темы.
 """
+ipnet = input("Введите адрес")
+
+network = '''
+Network:
+{0:<8}  {1:<8}  {2:<8}  {3:<8}
+{0:08b}  {1:08b}  {2:08b}  {3:08b}'''
+maskSlash = '''
+Mask:
+/{0}'''
+mask10 =  '''{0:<8}  {1:<8}  {2:<8}  {3:<8}'''
+mask2 = '''{0}  {1}  {2}  {3}'''
+
+ip = ipnet.split('/')
+
+ip1 = ip[0].split(".")
+int0 = int(ip1[0])
+int1 = int(ip1[1])
+int2 = int(ip1[2])
+int3 = int(ip1[3])
+
+print(network.format(int0, int1, int1, int3))
+
+m = int(ip[1])
+m2 = "1" * m + "0"* (32 - m)
+m2Int0 = m2[0:8]
+m2Int1 = m2[8:16]
+m2Int2 = m2[16:24]
+m2Int3 = m2[24:32]
+
+print(maskSlash.format(m))
+print(mask10.format(int(m2Int0, 2), int(m2Int1, 2),int(m2Int2, 2),int(m2Int3, 2)))
+print(mask2.format(m2Int0, m2Int1, m2Int2, m2Int3))
+

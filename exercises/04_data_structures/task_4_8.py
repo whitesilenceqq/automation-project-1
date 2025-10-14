@@ -26,3 +26,14 @@
 """
 
 ip = "192.168.3.1"
+ip_template = '''
+{0:<8} {1:<8} {2:<8} {3:<8}
+{0:08b}  {1:08b}  {2:08b}  {3:08b}
+'''
+ip1 = ip.split(".")
+int0 = int(ip1[0])
+int1 = int(ip1[1])
+int2 = int(ip1[2])
+int3 = int(ip1[3])
+list1 = ip_template.format(int0, int1, int2, int3)
+print(list1)

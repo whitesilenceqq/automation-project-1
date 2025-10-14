@@ -1,3 +1,4 @@
+#! /usr/bin/env  python3
 # -*- coding: utf-8 -*-
 """
 Задание 5.1c
@@ -49,3 +50,7 @@ london_co = {
         "routing": True,
     },
 }
+name = input("Введите имя устройства: ")
+list_keys = list(london_co.setdefault(name).keys())
+str_keys = ", ".join(list_keys)
+print(london_co.setdefault(name).get(input("Введите имя параметра ({}): ".format(str_keys)), "Такого параметра нет"))

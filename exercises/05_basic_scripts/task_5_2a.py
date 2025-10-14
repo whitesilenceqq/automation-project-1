@@ -49,3 +49,58 @@ bin_ip = "00001010000000010000000111000011"
 Ограничение: Все задания надо выполнять используя только пройденные темы.
 
 """
+ipaddr = input("Введите адрес: ")
+
+network10 = '''
+Network:
+{0:<8}  {1:<8}  {2:<8}  {3:<8}'''
+
+network2 = '''{0}  {1}  {2}  {3}'''
+
+maskSlash = '''
+Mask:
+/{0}'''
+mask10 =  '''{0:<8}  {1:<8}  {2:<8}  {3:<8}'''
+mask2 = '''{0}  {1}  {2}  {3}'''
+
+ip = ipaddr.split('/')
+
+ip1 = ip[0].split(".")
+int0 = int(ip1[0])
+int1 = int(ip1[1])
+int2 = int(ip1[2])
+int3 = int(ip1[3])
+
+mask = int(ip[1])
+m2 = "1" * mask + "0" * (32 - mask)
+zeros = 32 - mask
+
+m2Int0 = m2[0:8]
+m2Int1 = m2[8:16]
+m2Int2 = m2[16:24]
+m2Int3 = m2[24:32]
+
+bin0 = bin(int0).lstrip("0").lstrip("b").zfill(8)
+bin1 = bin(int1).lstrip("0").lstrip("b").zfill(8)
+bin2 = bin(int2).lstrip("0").lstrip("b").zfill(8)
+bin3 = bin(int3).lstrip("0").lstrip("b").zfill(8)
+
+binFull = bin0 + bin1 + bin2 + bin3
+binNetworkWithoutZeros = binFull[0:mask]
+binNetworkPlusZeros = binNetworkWithoutZeros + "0" * (32 - mask)
+
+binNetwork0 = binNetworkPlusZeros[0:8]
+binNetwork1 = binNetworkPlusZeros[8:16]
+binNetwork2 = binNetworkPlusZeros[16:24]
+binNetwork3 = binNetworkPlusZeros[24:32]
+
+
+#print(binNetworkWithoutZeros)
+#print(binNetworkPlusZeros)
+
+print(network10.format(int(binNetwork0, 2), int(binNetwork1, 2),int(binNetwork2, 2),int(binNetwork3, 2)))
+print(network2.format(binNetwork0, binNetwork1, binNetwork2, binNetwork3))
+
+print(maskSlash.format(mask))
+print(mask10.format(int(m2Int0, 2), int(m2Int1, 2),int(m2Int2, 2),int(m2Int3, 2)))
+print(mask2.format(m2Int0, m2Int1, m2Int2, m2Int3))

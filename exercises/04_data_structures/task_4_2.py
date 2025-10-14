@@ -15,3 +15,5 @@
 """
 
 mac = "AAAA:BBBB:CCCC"
+max = mac.replace(":", ".")
+print(max)

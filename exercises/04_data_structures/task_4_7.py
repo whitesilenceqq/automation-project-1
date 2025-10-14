@@ -1,3 +1,4 @@
+
 # -*- coding: utf-8 -*-
 """
 Задание 4.7
@@ -16,3 +17,8 @@
 """
 
 mac = "AAAA:BBBB:CCCC"
+mac1 = mac.split(":")
+a = "".join(mac1)
+b = int(a, 16)
+c = bin(b)[2:]
+print(c)
